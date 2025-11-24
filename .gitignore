@@ -1,0 +1,96 @@
+# ============================
+# Unreal Engine 5.7 GitIgnore
+# ============================
+
+# Ignore project-specific binaries and intermediates
+Binaries/
+DerivedDataCache/
+Intermediate/
+Saved/
+Build/Android/
+Build/IOS/
+
+# Ignore compiled shaders & temporary files
+*.sdf
+*.suo
+*.opensdf
+*.pdb
+*.ipch
+*.db
+*.db-shm
+*.db-wal
+
+# Ignore Unreal auto-generated config folders
+IntermediateBuild/
+DerivedDataCache/
+Script/
+SceneCaches/
+Collections/
+
+# Ignore Rider, VS, and VSCode project files
+.vs/
+.vscode/
+.idea/
+*.vcxproj
+*.vcxproj.filters
+*.VC.db
+*.VC.opendb
+
+# Ignore local environment settings
+*.sln
+*.code-workspace
+*.opensdf
+*.suo
+*.user
+*.userprefs
+
+# Ignore OS files
+.DS_Store
+Thumbs.db
+
+# Ignore backup files
+*_Backup.umap
+*_BuiltData.uasset
+
+# Ignore Generated C++ files from UE
+# (These regenerate automatically)
+*.generated.h
+*.generated.cpp
+
+# Ignore Plugin binaries/intermediate
+Plugins/*/Binaries/
+Plugins/*/Intermediate/
+
+# Ignore packaged builds
+Windows/
+Linux/
+Mac/
+Android/
+IOS/
+HTML5/
+Shipping/
+Development/
+
+# Ignore logs
+*.log
+*.log1
+*.log2
+
+# Ignore crash reports
+*.dmp
+
+# Ignore Unreal’s autosave maps & backups
+Autosaves/
+Backup/
+
+# Ignore .urev and autosaved assets
+*.tmp
+*.temp
+*.orig
+*.old
+
+# If you're using Git LFS (recommended for .uasset/.umap)
+# Uncomment this if needed
+# *.uasset filter=lfs diff=lfs merge=lfs -text
+# *.umap filter=lfs diff=lfs merge=lfs -text
+
