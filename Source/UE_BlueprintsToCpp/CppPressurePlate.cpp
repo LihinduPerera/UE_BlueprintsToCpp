@@ -3,6 +3,7 @@
 
 #include "CppPressurePlate.h"
 #include "Components/SphereComponent.h"
+#include "CppDoor.h"
 
 // Sets default values
 ACppPressurePlate::ACppPressurePlate()

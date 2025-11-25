@@ -25,10 +25,10 @@ protected:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components")
 	USphereComponent* SphereCollision;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Materials")
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Materials")
 	UMaterialInterface* DefaultPlateMaterial;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Materials")
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Materials")
 	UMaterialInterface* PressedPlateMaterial;
 
 	// Called when the game starts or when spawned
