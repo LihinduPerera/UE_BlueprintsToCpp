@@ -4,6 +4,7 @@
 #include "CppPressurePlate.h"
 #include "Components/SphereComponent.h"
 #include "CppDoor.h"
+#include "UE_BlueprintsToCppCharacter.h"
 
 // Sets default values
 ACppPressurePlate::ACppPressurePlate()
@@ -18,6 +19,9 @@ ACppPressurePlate::ACppPressurePlate()
 	SphereCollision = CreateDefaultSubobject<USphereComponent>(TEXT("SphereCollision"));
 	SphereCollision->SetupAttachment(RootComponent);
 	SphereCollision->SetSphereRadius(100.0f);
+
+	SphereCollision->OnComponentBeginOverlap.AddDynamic(this, &ACppPressurePlate::OnPressurePlatePressed);
+	SphereCollision->OnComponentEndOverlap.AddDynamic(this, &ACppPressurePlate::OnPressurePlateReleased);
 }
 
 // Called when the game starts or when spawned
@@ -34,3 +38,21 @@ void ACppPressurePlate::Tick(float DeltaTime)
 
 }
 
+void ACppPressurePlate::OnPressurePlatePressed(UPrimitiveComponent* OverlappedComp, AActor* OtherActor,
+	UPrimitiveComponent* OtherComp, int32 OtherBodyIndex,
+	bool bFromSweep, const FHitResult& SweepResult)
+{
+	if (OtherActor->IsA(AUE_BlueprintsToCppCharacter::StaticClass()) && DoorRef) {
+		DoorRef->OpenDoor();
+		PlateMesh->SetMaterial(0, PressedPlateMaterial);
+	}
+}
+
+void ACppPressurePlate::OnPressurePlateReleased(UPrimitiveComponent* OverlappedComp, AActor* OtherActor,
+	UPrimitiveComponent* OtherComp, int32 OtherBodyIndex)
+{
+	if (OtherActor->IsA(AUE_BlueprintsToCppCharacter::StaticClass()) && DoorRef) {
+		DoorRef->CloseDoor();
+		PlateMesh->SetMaterial(0, DefaultPlateMaterial);
+	}
+}
